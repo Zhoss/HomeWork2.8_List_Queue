@@ -11,7 +11,9 @@ import Transport.Mechanic;
 import Transport.ServiceStation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -44,7 +46,7 @@ public class Main {
 //        Bus.SeatQuantity.identifySeatQuantity(hyundai);
 //        hyundai.maxSpeed();
 
-        List<Transport> racingTransport = new ArrayList<>();
+        Set<Transport> racingTransport = new HashSet<>();
         racingTransport.add(subaru);
         racingTransport.add(mitsubishi);
         racingTransport.add(citroen);
@@ -65,7 +67,7 @@ public class Main {
         DriverC dmitriy = new DriverC("Василенко Дмитрий Петрович", true, 6);
         DriverD nicolai = new DriverD("Ткаченко Николай Александрович", true, 12);
 
-        List<Driver> drivers = new ArrayList<>();
+        Set<Driver> drivers = new HashSet<>();
         drivers.add(denis);
         drivers.add(dmitriy);
         drivers.add(nicolai);
@@ -85,7 +87,7 @@ public class Main {
         Sponsor beeline = new Sponsor("Билайн");
         System.out.println("");
 
-        List<Sponsor> sponsors = new ArrayList<>();
+        Set<Sponsor> sponsors = new HashSet<>();
         sponsors.add(rosneft);
         sponsors.add(gazprom);
         sponsors.add(beeline);
@@ -94,7 +96,7 @@ public class Main {
         Mechanic<Car, Sponsor> vadim = new Mechanic("Вадим", "Белов", gazprom);
         Mechanic<Truck, Sponsor> michail = new Mechanic("Михаил", "Клинов", beeline);
 
-        List<Mechanic> mechanics = new ArrayList<>();
+        Set<Mechanic> mechanics = new HashSet<>();
         mechanics.add(andrei);
         mechanics.add(vadim);
         mechanics.add(michail);
@@ -119,7 +121,7 @@ public class Main {
         serviceStation.doDiagnostic();
     }
 
-    public static void checkTransport(List<Transport> list) {
+    public static void checkTransport(Set<Transport> list) {
         for (Transport transport : list) {
             if (transport.passedDiagnostics() && (transport.getClass() == Car.class || transport.getClass() == Truck.class)) {
                 System.out.println("Транспорт " + transport.getBrand() + " " + transport.getModel() + " прошел диагностику");
@@ -131,7 +133,7 @@ public class Main {
         }
     }
 
-    public static void checkDiagnostics(List<Transport> list) {
+    public static void checkDiagnostics(Set<Transport> list) {
         try {
             checkTransport(list);
         } catch (IllegalArgumentException e) {
